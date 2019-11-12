@@ -1,5 +1,24 @@
+import java.util.*;
+
 public class SwapNodePairs {
   public static void main (String[] args) {
+    int[] arr = {1,2,3,4,5};
+    ListNode dummy = new ListNode(0);
+    ListNode prev = new ListNode(arr[0]);
+    dummy.next = prev;
+    for (int i = 1; i < arr.length; i++) {
+      ListNode newNode = new ListNode(arr[i]);
+      prev.next = newNode;
+      prev = newNode;
+    }
+    System.out.println(dummy.next.val);
+    ListNode swappedHead = swapPairs(dummy.next);
+    List<Integer> list = new ArrayList<Integer>();
+    while (swappedHead != null) {
+      list.add(swappedHead.val);
+      swappedHead = swappedHead.next;
+    }
+    System.out.println(list);
 
   }
 
@@ -22,7 +41,7 @@ public class SwapNodePairs {
 
 }
 
-public class ListNode {
+class ListNode {
   int val;
   ListNode next;
   public ListNode (int val) {
@@ -30,7 +49,7 @@ public class ListNode {
     this.next = null;
   }
 
-  public setNext(ListNode next) {
+  public void setNext(ListNode next) {
     this.next = next;
   }
 }
