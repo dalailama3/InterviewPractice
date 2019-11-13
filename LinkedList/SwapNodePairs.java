@@ -35,12 +35,7 @@ public class SwapNodePairs {
     n.next = head;
     return n;
   }
-
-
-
-
 }
-
 class ListNode {
   int val;
   ListNode next;
