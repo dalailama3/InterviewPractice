@@ -13,6 +13,19 @@ public class ReverseLinkedList {
     return prev;
   }
 
+  public static ListNode recursiveReverse(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode nextNode = head.next;
+    ListNode n = recursiveReverse(nextNode);
+    System.out.println("n is: " + n.val + "and head is " + head.val);
+    head.next.next = head;
+    head.next = null;
+    return n;
+
+  }
+
   public static void main (String[] args) {
     int[] arr = {1,2,3,4,5};
     ListNode dummy = new ListNode(0);
@@ -23,7 +36,7 @@ public class ReverseLinkedList {
       prev.next = newNode;
       prev = newNode;
     }
-    ListNode head = reverse(dummy.next);
+    ListNode head = recursiveReverse(dummy.next);
     while (head != null) {
       System.out.println(head.val);
       head = head.next;
