@@ -4,21 +4,29 @@ import java.util.PriorityQueue;
 
 public class KthLargest {
     public static int findKthLargest(int[] nums, int k) {
-
-        PriorityQueue<Integer> pq = new PriorityQueue<>(nums.length, Collections.reverseOrder());
+        if (k > nums.length) return -1;
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
         for(int n : nums) {
-            pq.offer(n);
-        }
-        int result = 0;
-        while(k > 0 && !pq.isEmpty()){
-            result = pq.poll();
-            k--;
+
+
+            if (pq.size() == k) {
+                if (n > pq.peek()) {
+                    pq.poll();
+                    pq.offer(n);
+                }
+            } else {
+                pq.offer(n);
+            }
+
+            System.out.println(pq);
+
         }
 
-        return result;
+
+        return pq.peek();
     }
 
     public static void main(String[] args) {
-        System.out.println(findKthLargest(new int[]{3,2,1,5,6,4}, 2));
+        System.out.println(findKthLargest(new int[]{3,2,1,5,6,4}, 3));
     }
 }

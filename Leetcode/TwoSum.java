@@ -3,7 +3,7 @@ public class TwoSum {
     public static List<List<Integer>> twoSum(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
-        System.out.println(Arrays.toString(nums));
+        //System.out.println(Arrays.toString(nums));
         int i = 0;
         int j = nums.length -1;
         while (i <= j) {
@@ -38,10 +38,5 @@ public class TwoSum {
         int[] nums = {4,4,1,6,3,9,0,-4};
         System.out.println(twoSum(nums,9));
     }
-
-
-
-
-
 
 }
